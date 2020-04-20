@@ -79,6 +79,7 @@ class Product extends CI_Controller{
        $description=$this->input->post('description');
        $stock=$this->input->post('stock');
        $price=$this->input->post('price');
+       $category=$this->input->post('category');
 if(!empty($_FILES['picture']['name'])){
  
         if ($this->upload->do_upload('picture')){
@@ -96,7 +97,7 @@ if(!empty($_FILES['picture']['name'])){
             $this->image_lib->resize();
 
             $picture=$gbr['file_name'];
-            $this->m_product->save_product($product_name,$description,$stock,$price,$picture);
+            $this->m_product->save_product($product_name,$description,$stock,$price,$picture,$category);
             $this->session->set_flashdata('berhasil', 'sdf');
             $this->load->view('product/v_add_new_product');
         }

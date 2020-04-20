@@ -22,8 +22,8 @@ class m_product extends CI_Model{
       $hsl=$this->db->query("UPDATE product set product_name='$product_name', description='$description', stock='$stock',price='$price' where id_product='$id_product'");
       return $hsl;
     }
-    public function save_product($product_name,$description,$stock,$price,$picture){
-      $hsl=$this->db->query("INSERT INTO product (id_product, product_name, description, stock, price, picture) VALUES ('','$product_name','$description','$stock','$price','$picture')");
+    public function save_product($product_name,$description,$stock,$price,$picture,$category){
+      $hsl=$this->db->query("INSERT INTO product (id_product, product_name, description, stock, price, picture, category) VALUES ('','$product_name','$description','$stock','$price','$picture','$category')");
       return $hsl;
     }
 }
