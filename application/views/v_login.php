@@ -109,7 +109,7 @@ body {
   -moz-osx-font-smoothing: grayscale;      
 }
     </style>
-    <title>Jaskipin Courier Express </title>
+    <title>Dapuramy WEB ADMIN </title>
 </head>
 <body>
 <div class="login-page">

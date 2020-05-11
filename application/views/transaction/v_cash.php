@@ -71,7 +71,6 @@
 	<th width="1%">NO.</th>
     <th><i class="fa fa-key"></i> Order ID</th>
   <th><i class="fa fa-address-book"></i> Customer Name</th>
-	<th><i class="fa fa-cutlery"></i> Product</th>
   <th><i class="fa fa-dollar"></i> Price Total</th>
   <th><i class="fa fa-check-circle"></i> Status</th>
   <th><i class="fa fa-dashboard"></i> Method</th>
@@ -86,7 +85,6 @@
                     foreach ($order->result_array() as $sws):
                         $no++;
                         $id_order=$sws['id_order'];
-                        $product_name=$sws['product'];
                         $method=$sws['method'];
                         $price_total=$sws['price_total'];
                         $name=$sws['name'];
@@ -100,7 +98,6 @@
   <td><?php echo $no;?></td>
   <td><?php echo $id_order;?></td>
   <td><?php echo $name;?></td>
-  <td><?php echo $product_name;?></td>
     <td><?php echo $price_total;?></td>
 
     <td>
