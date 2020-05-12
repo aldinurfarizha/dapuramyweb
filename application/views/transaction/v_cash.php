@@ -109,17 +109,17 @@ switch ($status) {
     case "0":
       echo '<span class="btn-sm btn-success"><i class="fa fa-check"></i> Order Has Been Placed</span>';
         break;
-    case "1":
+    case "2":
       echo '<span class="btn-sm btn-primary"><i class="fa fa-clock-o"></i> Order In Process</span>';
         break;
-    case "2":
+    case "3":
       echo '<span class="btn-sm btn-success"><i class="fa fa-check"></i> Order In delivery</span>';
         break;
-        case "3":
+        case "4":
           echo '<span class="btn-sm btn-success"><i class="fa fa-check"></i> Order In delivery</span>';
           break;
-          case "4":
-            echo "Your favorite color is green!";
+          case "5":
+            echo "Order Rejected";
             break;
     default:
     echo '<span class="btn-sm btn-danger"><i class="fa fa-close"></i> Order Rejected</span>';
@@ -154,11 +154,11 @@ switch ($status) {
                   foreach ($order->result_array() as $sws){
                  
                     $id_order=$sws['id_order'];
-                    $product_name=$sws['product'];
                     $method=$sws['method'];
                     $price_total=$sws['price_total'];
                     $name=$sws['name'];
                     $status=$sws['status_order'];
+                    $token=$sws['token_fcm'];
               ?>
                <div id="delete<?php echo $id_order?>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
                     <div class="modal-dialog">
@@ -171,7 +171,9 @@ switch ($status) {
                            
                             <br>
                                    <input name="id_order" type="hidden" value="<?php echo $id_order; ?>"> 
-                                    <input class="form-control" name="nama"value="Product Name : <?php echo $product_name; ?>" readonly>
+                                   <input name="token" type="hidden" value="<?php echo $token; ?>"> 
+                                   <input name="body" type="hidden" value="Cek Notification Please"> 
+                        
                                     <br>
                                     <input class="form-control" name="nama"value="Description : <?php echo $name; ?>" readonly>
                                     <br>

@@ -3,7 +3,7 @@
 class m_transaction extends CI_Model{
 
     public function cash(){
-        $hsl=$this->db->query("SELECT id_order, method, price_total, customer.name, order_date, status_order from transaction  INNER JOIN customer on transaction.id_customer=customer.id_customer WHERE method='CASH'");
+        $hsl=$this->db->query("SELECT id_order, method, price_total, customer.name, order_date, status_order, customer.token_fcm from transaction INNER JOIN customer on transaction.id_customer=customer.id_customer WHERE method='CASH'");
         return $hsl;
        }
        public function cod(){
