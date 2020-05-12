@@ -70,8 +70,8 @@
 <tr>
 	<th width="1%">NO.</th>
     <th><i class="fa fa-cutlery"></i> Product Name</th>
-	<th><i class="fa fa-address-book"></i> Description</th>
-	<th><i class="fa fa-calendar"></i> Stock</th>
+	<th width="20%"><i class="fa fa-address-book"></i> Description</th>
+	<th>Stock</th>
   <th><i class="fa fa-dollar"></i> Price</th>
   <th><i class="fa fa-picture-o"></i> picture</th>
 	<th><i class="fa fa-check"></i> Status</th>
@@ -101,7 +101,7 @@
 	<td><?php echo $product_name;?></td>
 	<td><?php echo $description;?></td>
     <td><?php echo $stock;?></td>
-    <td><?php echo $price;?></td>
+    <td><?php echo 'Rp. '.number_format($price, 0, ".", ".");?></td>
   <td><a href="<?php echo base_url('assets/images/product/').$picture ?>"> <img src="<?php echo base_url('assets/images/product/').$picture ?>" alt="<?php echo $picture;?>" height="100px"></a> </td>
   <td><?php if($status=="0"){
   
@@ -113,13 +113,13 @@
 
   }
   ?></td>
-    <td><center><a class="btn btn-sm btn-warning" href="#edit<?php echo $id_product?>" data-toggle="modal" title="Edit"><span class="fa fa-pencil"></span> Edit</a>
-    <a class="btn btn-sm btn-danger" href="#delete<?php echo $id_product?>" data-toggle="modal" title="Delete"><span class="fa fa-trash"></span> Delete</a>
+    <td><center><a class="btn btn-sm btn-warning" href="#edit<?php echo $id_product?>" data-toggle="modal" title="Edit"><span class="fa fa-pencil"></span> </a>
+    <a class="btn btn-sm btn-danger" href="#delete<?php echo $id_product?>" data-toggle="modal" title="Delete"><span class="fa fa-trash"></span> </a>
     <?php if($status==0){
-        echo'<a class="btn btn-sm btn-primary" href="#display'.$id_product.'" data-toggle="modal" title="Display"><span class="fa fa-eye"></span> Display</a>';
+        echo'<a class="btn btn-sm btn-primary" href="#display'.$id_product.'" data-toggle="modal" title="Display"><span class="fa fa-eye"></span> </a>';
     }
     else{
-        echo'<a class="btn btn-sm btn-danger" href="#notdisplay'.$id_product.'" data-toggle="modal" title="Not Display"><span class="fa fa-close"></span>Not Display</a>';
+        echo'<a class="btn btn-sm btn-danger" href="#notdisplay'.$id_product.'" data-toggle="modal" title="Not Display"><span class="fa fa-close"></span></a>';
     }
     ?>
     </td>

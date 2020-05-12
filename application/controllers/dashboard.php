@@ -22,8 +22,10 @@ class Dashboard extends CI_Controller {
 
 	public function index()
 	{
-
-        $this->load->view('admin/home');
+		$data['transaction']=$this->m_transaction->transaction();
+		$data['customer']=$this->m_transaction->customer();
+		$data['profit']=$this->m_transaction->profit();
+        $this->load->view('admin/home',$data);
 		
 	}
 }

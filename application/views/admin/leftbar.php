@@ -83,7 +83,7 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li class="<?php if($this->uri->segment('2')=='report') { echo"active" ;}?>"><a href="<?php echo base_url('report/report') ?>"><i class="fa fa-id-card-o"></i> Report</a></li>
+          <li class="<?php if($this->uri->segment('2')=='report') { echo"active" ;}?>"><a href="<?php echo base_url('report/rep') ?>"><i class="fa fa-id-card-o"></i> Report</a></li>
        
         </ul>
       </li>

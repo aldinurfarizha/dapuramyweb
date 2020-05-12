@@ -37,7 +37,14 @@
             <div class="info-box-content">
               <span class="info-box-text">Profit</span>
               <span class="info-box-number">
-             136.000
+              <?php 
+                  $no=0;
+                    foreach ($profit->result_array() as $sws):
+                        $profit=$sws['profit'];
+                        echo 'Rp. '.number_format($profit, 0, ".", ".");
+                    endforeach;
+                ?>
+              <?php  ?>
               </span>
             </div>
              
@@ -53,7 +60,13 @@
             <div class="info-box-content">
               <span class="info-box-text">Customer</span>
               <span class="info-box-number">
-             3
+              <?php 
+                  $no=0;
+                    foreach ($customer->result_array() as $sws):
+                        $customer=$sws['customer'];
+                        echo number_format($customer, 0, ".", ".");
+                    endforeach;
+                ?>
               </span>
             </div>
             <!-- /.info-box-content -->
@@ -72,7 +85,13 @@
             <div class="info-box-content">
               <span class="info-box-text">Order Total </span>
               <span class="info-box-number">
-         4
+              <?php 
+                  $no=0;
+                    foreach ($transaction->result_array() as $sws):
+                        $transaction=$sws['transaction'];
+                        echo number_format($transaction, 0, ".", ".");
+                    endforeach;
+                ?>
               </span>
             <!-- /.info-box-content -->
           </div>

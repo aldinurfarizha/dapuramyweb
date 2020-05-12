@@ -13,7 +13,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
     <center>
-    <h1>Transaction with Transfer Method</h1>
+    <h1>Transaction with Cash Method</h1>
     </center>
     <br>
     <?php if($this->session->flashdata('display') == TRUE):?>
@@ -69,12 +69,14 @@
 	
 <tr>
 	<th width="1%">NO.</th>
-    <th><i class="fa fa-key"></i> Order ID</th>
-  <th><i class="fa fa-address-book"></i> Customer Name</th>
-	<th><i class="fa fa-cutlery"></i> Product</th>
-  <th><i class="fa fa-dollar"></i> Price Total</th>
-  <th><i class="fa fa-check-circle"></i> Status</th>
-  <th><i class="fa fa-dashboard"></i> Method</th>
+    <th width="10%"> Order ID</th>
+  <th width="15%"><i class="fa fa-address-book"></i> Customer Name</th>
+  <th width="15%"><i class="fa fa-map-marker"></i> Address</th>
+  <th width="15%"><i class="fa fa-dollar"></i> Price Total</th>
+  <th width="5%"> Description</th>
+  <th width="5%"><i class="fa fa-image"></i>Transfer Prof</th>
+  <th width="16%"><i class="fa fa-check-circle"></i> Status</th>
+  
   <th><i class="fa fa-gears"></i> Action</th>
 
  
@@ -86,23 +88,21 @@
                     foreach ($order->result_array() as $sws):
                         $no++;
                         $id_order=$sws['id_order'];
-                        $product_name=$sws['product'];
                         $method=$sws['method'];
                         $price_total=$sws['price_total'];
                         $name=$sws['name'];
                         $status=$sws['status_order'];
-                       
-                      
-						
-            
+                        $address=$sws['address'];
+                        $picture=$sws['img'];
                 ?>
 <tr>
   <td><?php echo $no;?></td>
-  <td><?php echo $id_order;?></td>
+  <td><center><?php echo $id_order;?></center></td>
   <td><?php echo $name;?></td>
-  <td><?php echo $product_name;?></td>
-    <td><?php echo $price_total;?></td>
-
+  <td><?php echo $address;?></td>
+    <td><?php echo 'Rp. '.number_format($price_total, 0, ".", ".");?></td>
+    <td><?php echo ' <a href="description/'.$id_order.'">DESCRIPTION</a>';?></td>
+    <td><a href="<?php echo base_url('assets/images/product/').$picture ?>"> <img src="<?php echo base_url('assets/images/product/').$picture ?>" alt="<?php echo $picture;?>" height="100px"></a> </td>
     <td>
 
     <?php
@@ -110,31 +110,31 @@ $status;
 
 switch ($status) {
     case "0":
-      echo '<span class="btn-sm btn-success"><i class="fa fa-check"></i> Order Has Been Placed</span>';
+      echo '<span class="btn-sm btn-warning"><i class="fa fa-clock-o"></i> Order Has Been Placed</span>';
         break;
     case "1":
-      echo '<span class="btn-sm btn-primary"><i class="fa fa-clock-o"></i> Order In Process</span>';
+      echo '<span class="btn-sm btn-primary"><i class="fa fa-refresh"></i> Order In Process</span>';
         break;
     case "2":
-      echo '<span class="btn-sm btn-success"><i class="fa fa-check"></i> Order In delivery</span>';
+      echo '<span class="btn-sm btn-success"><i class="fa fa-check"></i> Order In Delivery</span>';
         break;
-        case "3":
-          echo '<span class="btn-sm btn-success"><i class="fa fa-check"></i> Order In delivery</span>';
-          break;
-          case "4":
-            echo "Your favorite color is green!";
+        case "5":
+          echo '<span class="btn-sm bg-aqua"><i class="fa fa-check"></i> Transfered Verification</span>';
+            break;
+          case "99":
+            echo '<span class="btn-sm btn-danger"><i class="fa fa-close"></i> Order Cancle</span>';
             break;
     default:
-    echo '<span class="btn-sm btn-danger"><i class="fa fa-close"></i> Order Rejected</span>';
+    echo '<span class="btn-sm btn-danger"><i class="fa fa-close"></i> Order Cancle</span>';
 }
 ?> 
 
     </td>
     
 
-    <td><?php echo $method;?></td>
+    
     <td><center>
-    <a class="btn btn-sm btn-success" href="#delete<?php echo $id_order?>" data-toggle="modal" title="Change"><span class="fa fa-edit"></span> Change Status</a>
+    <a class="btn btn-sm bg-aqua" href="#delete<?php echo $id_order?>" data-toggle="modal" title="Change"><span class="fa fa-edit"></span> Change Status</a>
 
     </td>
 	</center>
@@ -155,13 +155,13 @@ switch ($status) {
 <?php 
                   
                   foreach ($order->result_array() as $sws){
-                 
+                    $id_customer=$sws['id_customer'];
                     $id_order=$sws['id_order'];
-                    $product_name=$sws['product'];
                     $method=$sws['method'];
                     $price_total=$sws['price_total'];
                     $name=$sws['name'];
                     $status=$sws['status_order'];
+                    $token=$sws['token_fcm'];
               ?>
                <div id="delete<?php echo $id_order?>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
                     <div class="modal-dialog">
@@ -174,28 +174,26 @@ switch ($status) {
                            
                             <br>
                                    <input name="id_order" type="hidden" value="<?php echo $id_order; ?>"> 
-                                    <input class="form-control" name="nama"value="Product Name : <?php echo $product_name; ?>" readonly>
+                                   <input name="token" type="hidden" value="<?php echo $token; ?>"> 
+                                   <input name="id_customer" type="hidden" value="<?php echo $id_customer;?>"> 
+                        
                                     <br>
-                                    <input class="form-control" name="nama"value="Description : <?php echo $name; ?>" readonly>
+                                    <input class="form-control" name="nama"value="Customer Name : <?php echo $name; ?>" readonly>
                                     <br>
                                     <h4>
-			<label>
-				<input type="radio" name="metode" id="metode" value="1" >Order Has Been Placed
-			</label>
-      &nbsp;
-      <label>
-				<input type="radio" name="metode" id="metode" value="2">Order In Process
+                                    <label>
+                                    &nbsp;
+				<input type="radio" name="metode" id="metode" value="5">Transfered Verification
       </label>
       &nbsp;
       <label>
-				<input type="radio" name="metode" id="metode" value="3">Order In delivery
+				<input type="radio" name="metode" id="metode" value="1">Order In Process
       </label>
+      &nbsp;
       <label>
-				<input type="radio" name="metode" id="metode" value="4">Order Done
+				<input type="radio" name="metode" id="metode" value="2">Order In Delivery
       </label>
-      <label>
-				<input type="radio" name="metode" id="metode" value="5">Order Rejected
-      </label>
+      
       </h4>
                                    
                         </div>

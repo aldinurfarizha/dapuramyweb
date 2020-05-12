@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: May 11, 2020 at 09:30 PM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.0.33
+-- Host: 127.0.0.1
+-- Generation Time: May 13, 2020 at 01:00 AM
+-- Server version: 10.4.6-MariaDB
+-- PHP Version: 7.3.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -60,7 +60,7 @@ CREATE TABLE `customer` (
   `address` varchar(100) NOT NULL,
   `card_identity` text NOT NULL,
   `status` varchar(100) NOT NULL DEFAULT 'NOT VERIFIED',
-  `token_fcm` text
+  `token_fcm` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -70,7 +70,7 @@ CREATE TABLE `customer` (
 INSERT INTO `customer` (`id_customer`, `name`, `password`, `phone_number`, `address`, `card_identity`, `status`, `token_fcm`) VALUES
 (1, 'Reza', 'b96dbf74436b3f73db2f27c2fb7c966eb1f47360', '0899703665', 'Pramuka Street No.32', 'ktp.jpg', 'VERIFIED', NULL),
 (2, 'Romi', '310a80d2c92787eae4089811689b6de28d3f5252', '08977654632', 'Jl. Winduhaji No.23', 'ktp2.jpg', 'VERIFIED', NULL),
-(9, 'Aldi Ganteng', '81dc9bdb52d04dc20036dbd8313ed055', '08977036016', 'Jl.Ramajaksa No.32', '', 'VERIFIED', 'cGqjWN4oS4Cb76t2LLrT65:APA91bFjrEUwmrwIATItBxSb3cVdpgJtXVu8R9C6Fx0X98Nzg_OgJgJHsVBQBBY04lV_8Le_aLUwdABxjZeaiBApYvjr6dGE2XGxSmDwim1eqqX8UUtC5snNJA1I3DxvPrmEDNxFLyBA'),
+(9, 'Aldi Nurfarizha', '81dc9bdb52d04dc20036dbd8313ed055', '08977036016', 'Jl.Ramajaksa', '', 'VERIFIED', 'eE7DuEPwSvC5oFu_xNlj4C:APA91bE4ljACvGwKoRFWE6uwj_f0ZYuIcUSaE7lFqwz8i5WW5Kz_EyjI3WDAdFGEUlawvxH0UXtq9-Zbc-joNNR9nwathTA4qB3MSgI1MimXUF7svEV7SG23gac0YkZVVC1egyYfiQpD'),
 (28, 'bjj', 'hhik', '9', 'huik', '1588335316025.png', 'NOT VERIFIED', NULL),
 (29, 'kalimerah', '1234', '08977036017', 'huik', '1588335822519.png', 'NOT VERIFIED', NULL),
 (30, 'kalimerah', '81dc9bdb52d04dc20036dbd8313ed055', '089770365', 'huik', '1588335894226.png', 'NOT VERIFIED', NULL),
@@ -82,7 +82,8 @@ INSERT INTO `customer` (`id_customer`, `name`, `password`, `phone_number`, `addr
 (36, 'ffee', '4f8b50b5ddfbd73d622d14295e07c03d', '66564', 'hsjsisis', '1588336785772.png', 'NOT VERIFIED', NULL),
 (37, 'hsieiw', '6851b754b565edf963e54c0522ada9c5', '08977036013', 'hsisis', '1588337140479.png', 'NOT VERIFIED', NULL),
 (38, 'jsisis', '3be6ad2e392999dfbf7e8780ab764657', '089770369164', 'hsdisiso', '1588338437570.png', 'NOT VERIFIED', NULL),
-(39, 'Aldi test', '827ccb0eea8a706c4c34a16891f84e7b', '08977064315', 'Jl. Amerika No.32', '1588788578655.png', 'NOT VERIFIED', NULL);
+(39, 'Aldi test', '827ccb0eea8a706c4c34a16891f84e7b', '08977064315', 'Jl. Amerika No.32', '1588788578655.png', 'NOT VERIFIED', NULL),
+(40, 'si kasep', 'cc7d38d02e584b8cb23e7047b270c5af', '089640447444', 'sawahwaru', '1589266754038.png', 'VERIFIED', 'cMWgAvzwTvmkP9azOPpoS-:APA91bFHWtCSKj7yV1DlBsNh8cSCPEvcS0gqjvQeZWfT84QkfrWSY4qN19wUrpZU526xcnzxeZN2KXWF8yQYGg1SbzbWcY32McbX5sghLtQ0zGTVMOd_WXWJ6MHJrmWLLDBuxiRBoyoe');
 
 -- --------------------------------------------------------
 
@@ -113,7 +114,11 @@ INSERT INTO `detail_transaction` (`id_order`, `id_product`, `qty`) VALUES
 (7, 21, 1),
 (7, 26, 1),
 (8, 4, 1),
-(9, 5, 2);
+(9, 4, 1),
+(10, 5, 1),
+(11, 5, 1),
+(11, 8, 1),
+(12, 4, 1);
 
 -- --------------------------------------------------------
 
@@ -135,7 +140,11 @@ CREATE TABLE `notification` (
 
 INSERT INTO `notification` (`id_notification`, `message`, `id_customer`, `tanggal`, `id_order`) VALUES
 (1, 'ORDER IN PROSSESS', 9, '2020-05-14 00:00:00', 3),
-(2, 'ORDER IS READY', 9, '2020-05-12 06:14:14', 3);
+(2, 'ORDER IS READY', 9, '2020-05-12 06:14:14', 3),
+(4, 'ORDER IN DELIVERY', 9, '2020-05-13 02:51:07', 8),
+(5, 'ORDER IN PROSSESS', 9, '2020-05-13 03:07:09', 11),
+(6, 'ORDER IS READY', 9, '2020-05-13 03:10:32', 11),
+(7, 'TRANSFERED VERIFICATION', 9, '2020-05-13 03:27:17', 12);
 
 -- --------------------------------------------------------
 
@@ -195,7 +204,7 @@ CREATE TABLE `transaction` (
   `id_customer` int(100) NOT NULL,
   `price_total` int(100) NOT NULL,
   `method` varchar(100) NOT NULL,
-  `img` text,
+  `img` text DEFAULT NULL,
   `order_date` date NOT NULL,
   `status_order` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -205,12 +214,15 @@ CREATE TABLE `transaction` (
 --
 
 INSERT INTO `transaction` (`id_order`, `id_customer`, `price_total`, `method`, `img`, `order_date`, `status_order`) VALUES
-(4, 1, 10000, 'CASH', '', '2020-04-21', 0),
-(5, 9, 505000, 'TRANSFER', '', '2020-04-28', 0),
-(6, 9, 12826000, 'CASH', '', '2020-04-28', 0),
-(7, 39, 175000, 'CASH', '', '2020-05-07', 0),
-(8, 9, 25000, 'CASH', '', '2020-05-10', 0),
-(9, 9, 60000, 'CASH', '', '2020-05-11', 0);
+(4, 1, 10000, 'CASH', '0', '2020-04-21', 2),
+(5, 9, 505000, 'TRANSFER', '1589269998845.png', '2020-04-28', 0),
+(6, 9, 12826000, 'CASH', '0', '2020-04-28', 3),
+(7, 39, 175000, 'CASH', '0', '2020-05-07', 0),
+(8, 9, 25000, 'CASH', '0', '2020-05-10', 2),
+(9, 40, 25000, 'CASH', '0', '2020-05-12', 3),
+(10, 40, 30000, 'TRANSFER', '', '2020-05-12', 0),
+(11, 9, 80000, 'COD', NULL, '2020-05-13', 3),
+(12, 9, 25000, 'TRANSFER', NULL, '2020-05-13', 5);
 
 -- --------------------------------------------------------
 
@@ -278,9 +290,7 @@ INSERT INTO `vote` (`id_vote`, `id_product`, `id_customer`, `tgl`) VALUES
 (4, 5, 9, '2020-05-06'),
 (5, 4, 39, '2020-05-07'),
 (6, 5, 39, '2020-05-07'),
-(7, 7, 39, '2020-05-07'),
-(8, 4, 9, '2020-05-11'),
-(9, 5, 9, '2020-05-11');
+(7, 7, 39, '2020-05-07');
 
 --
 -- Indexes for dumped tables
@@ -354,13 +364,13 @@ ALTER TABLE `banner`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `id_customer` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id_customer` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `notification`
 --
 ALTER TABLE `notification`
-  MODIFY `id_notification` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_notification` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `product`
@@ -372,7 +382,7 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `transaction`
 --
 ALTER TABLE `transaction`
-  MODIFY `id_order` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_order` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `user`
@@ -390,7 +400,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `vote`
 --
 ALTER TABLE `vote`
-  MODIFY `id_vote` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_vote` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
