@@ -95,7 +95,7 @@
     <td><?php echo $name;?></td>
     <td><?php echo $phone_number;?></td>
 	<td><?php echo $address;?></td>
-  <td><a href="<?php echo base_url('assets/images/customer/').$card_identity ?>"> <img src="<?php echo base_url('assets/images/customer/').$card_identity ?>" alt="<?php echo $card_identity;?>" height="100px"></a> </td>
+  <td><a href="<?php echo base_url('apidapuramy/uploads/').$card_identity ?>"> <img src="<?php echo base_url('apidapuramy/uploads/').$card_identity ?>" alt="<?php echo $card_identity;?>" height="100px"></a> </td>
   <td><?php if($status=="NOT VERIFIED"){
   
     echo '<span class="btn-sm btn-danger"><i class="fa fa-close"></i> NOT VERIFIED</span>';

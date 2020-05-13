@@ -102,7 +102,7 @@
   <td><?php echo $address;?></td>
     <td><?php echo 'Rp. '.number_format($price_total, 0, ".", ".");?></td>
     <td><?php echo ' <a href="description/'.$id_order.'">DESCRIPTION</a>';?></td>
-    <td><a href="<?php echo base_url('assets/images/product/').$picture ?>"> <img src="<?php echo base_url('assets/images/product/').$picture ?>" alt="<?php echo $picture;?>" height="100px"></a> </td>
+    <td><a href="<?php echo base_url('apidapuramy/transfer/').$picture ?>"> <img src="<?php echo base_url('apidapuramy/transfer/').$picture ?>" alt="<?php echo $picture;?>" height="100px"></a> </td>
     <td>
 
     <?php

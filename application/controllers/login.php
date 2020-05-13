@@ -43,9 +43,7 @@ class Login extends CI_Controller  {
                     'hakakses'=>$row->hakakses,
                     'id_user'=>$row->id_user,
                     'nama_user'=>$row->nama_user,
-                    'kota'=>$row->kota,
-                    'telepon'=>$row->telepon,
-                    'alamat'=>$row->alamat
+                  
                 );
                 $this->session->set_userdata($params);
                 echo"<script>

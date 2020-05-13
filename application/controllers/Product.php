@@ -39,7 +39,6 @@ class Product extends CI_Controller{
  
         if ($this->upload->do_upload('picture')){
             $gbr = $this->upload->data();
-            //Compress Image
             $config['image_library']='gd2';
             $config['source_image']='./assets/images/product/'.$gbr['file_name'];
             $config['create_thumb']= FALSE;

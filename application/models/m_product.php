@@ -26,6 +26,14 @@ class m_product extends CI_Model{
       $hsl=$this->db->query("INSERT INTO product (id_product, product_name, description, stock, price, picture, category) VALUES ('','$product_name','$description','$stock','$price','$picture','$category')");
       return $hsl;
     }
+    public function get_banner(){
+      $hsl=$this->db->query("SELECT * from banner");
+      return $hsl;
+    }
+    public function change_banner($id,$picture){
+      $hsl=$this->db->query("UPDATE banner set image_url='$picture' where id='$id'");
+      return $hsl;
+    }
 }
 
 ?>

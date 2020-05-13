@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 13, 2020 at 01:00 AM
+-- Generation Time: May 13, 2020 at 08:07 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.8
 
@@ -30,8 +30,6 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `banner` (
   `id` int(11) NOT NULL,
-  `title` varchar(100) NOT NULL,
-  `description` varchar(100) NOT NULL,
   `image_url` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -39,12 +37,12 @@ CREATE TABLE `banner` (
 -- Dumping data for table `banner`
 --
 
-INSERT INTO `banner` (`id`, `title`, `description`, `image_url`) VALUES
-(1, 'Banner1', 'Gratis Madang', 'https://assets.grab.com/wp-content/uploads/sites/9/2019/09/02120649/Blog-September-Gembira-04.jpg'),
-(2, 'Banner1', 'Gratis Madang', 'https://assets.grab.com/wp-content/uploads/sites/9/2019/12/13174801/GF-Jangan-Lupa-Makan-Jajan-In-App-Banner-700x300-700x300.jpg'),
-(3, 'Banner1', 'Gratis Madang', 'https://d26bwjyd9l0e3m.cloudfront.net/wp-content/uploads/2016/05/grabfood-feature-image.jpg'),
-(4, 'Banner1', 'Gratis Madang', 'https://assets.grab.com/wp-content/uploads/sites/9/2019/12/13174800/GF-Jangan-Lupa-Makan-Bogo-In-App-Banner-700x300-700x300.jpg'),
-(5, 'Banner1', 'Gratis Madang', 'https://assets.grab.com/wp-content/uploads/sites/9/2019/12/13174801/GF-Jangan-Lupa-Makan-Signature-In-App-Banner-700x300-700x300.jpg');
+INSERT INTO `banner` (`id`, `image_url`) VALUES
+(1, 'c46800aad3aa83f5566b9281147ca6c9.jpg'),
+(2, 'efd2be9fac0c74ffd0dd3345635a239c.jpg'),
+(3, '75e54f783f764792cbb96e5fe78dfb20.jpg'),
+(4, 'e0893122af6896bd3dec7e223850bec6.jpg'),
+(5, '5d307f910655a342e67d5a0dada5efb4.jpg');
 
 -- --------------------------------------------------------
 
@@ -63,28 +61,6 @@ CREATE TABLE `customer` (
   `token_fcm` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `customer`
---
-
-INSERT INTO `customer` (`id_customer`, `name`, `password`, `phone_number`, `address`, `card_identity`, `status`, `token_fcm`) VALUES
-(1, 'Reza', 'b96dbf74436b3f73db2f27c2fb7c966eb1f47360', '0899703665', 'Pramuka Street No.32', 'ktp.jpg', 'VERIFIED', NULL),
-(2, 'Romi', '310a80d2c92787eae4089811689b6de28d3f5252', '08977654632', 'Jl. Winduhaji No.23', 'ktp2.jpg', 'VERIFIED', NULL),
-(9, 'Aldi Nurfarizha', '81dc9bdb52d04dc20036dbd8313ed055', '08977036016', 'Jl.Ramajaksa', '', 'VERIFIED', 'eE7DuEPwSvC5oFu_xNlj4C:APA91bE4ljACvGwKoRFWE6uwj_f0ZYuIcUSaE7lFqwz8i5WW5Kz_EyjI3WDAdFGEUlawvxH0UXtq9-Zbc-joNNR9nwathTA4qB3MSgI1MimXUF7svEV7SG23gac0YkZVVC1egyYfiQpD'),
-(28, 'bjj', 'hhik', '9', 'huik', '1588335316025.png', 'NOT VERIFIED', NULL),
-(29, 'kalimerah', '1234', '08977036017', 'huik', '1588335822519.png', 'NOT VERIFIED', NULL),
-(30, 'kalimerah', '81dc9bdb52d04dc20036dbd8313ed055', '089770365', 'huik', '1588335894226.png', 'NOT VERIFIED', NULL),
-(31, 'kalimerah', '81dc9bdb52d04dc20036dbd8313ed055', '08977036565656', 'huik', '1588335913811.png', 'NOT VERIFIED', NULL),
-(32, 'aldisd', 'fd808bbad61fb47c51f1f6824656cabc', '3453467456', 'sdflkjdf', 'IMG-20190917-WA0003.jpg', 'NOT VERIFIED', NULL),
-(33, 'aldisd', 'fd808bbad61fb47c51f1f6824656cabc', '76655', 'sdflkjdf', 'JHJHJHJHGHGHGH.png', 'NOT VERIFIED', NULL),
-(34, 'kalimerah', '81dc9bdb52d04dc20036dbd8313ed055', '0897703656644', 'huik', '1588336197958.png', 'NOT VERIFIED', NULL),
-(35, 'mundinglaya', 'f8ece137ab14d770f45950c4b30ccf84', '089770360496', 'hsbsjewo', '1588336472829.png', 'NOT VERIFIED', NULL),
-(36, 'ffee', '4f8b50b5ddfbd73d622d14295e07c03d', '66564', 'hsjsisis', '1588336785772.png', 'NOT VERIFIED', NULL),
-(37, 'hsieiw', '6851b754b565edf963e54c0522ada9c5', '08977036013', 'hsisis', '1588337140479.png', 'NOT VERIFIED', NULL),
-(38, 'jsisis', '3be6ad2e392999dfbf7e8780ab764657', '089770369164', 'hsdisiso', '1588338437570.png', 'NOT VERIFIED', NULL),
-(39, 'Aldi test', '827ccb0eea8a706c4c34a16891f84e7b', '08977064315', 'Jl. Amerika No.32', '1588788578655.png', 'NOT VERIFIED', NULL),
-(40, 'si kasep', 'cc7d38d02e584b8cb23e7047b270c5af', '089640447444', 'sawahwaru', '1589266754038.png', 'VERIFIED', 'cMWgAvzwTvmkP9azOPpoS-:APA91bFHWtCSKj7yV1DlBsNh8cSCPEvcS0gqjvQeZWfT84QkfrWSY4qN19wUrpZU526xcnzxeZN2KXWF8yQYGg1SbzbWcY32McbX5sghLtQ0zGTVMOd_WXWJ6MHJrmWLLDBuxiRBoyoe');
-
 -- --------------------------------------------------------
 
 --
@@ -96,29 +72,6 @@ CREATE TABLE `detail_transaction` (
   `id_product` int(100) NOT NULL,
   `qty` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `detail_transaction`
---
-
-INSERT INTO `detail_transaction` (`id_order`, `id_product`, `qty`) VALUES
-(5, 5, 5),
-(5, 4, 7),
-(5, 24, 5),
-(5, 26, 6),
-(6, 4, 500),
-(6, 21, 5),
-(6, 5, 5),
-(6, 7, 7),
-(7, 4, 6),
-(7, 21, 1),
-(7, 26, 1),
-(8, 4, 1),
-(9, 4, 1),
-(10, 5, 1),
-(11, 5, 1),
-(11, 8, 1),
-(12, 4, 1);
 
 -- --------------------------------------------------------
 
@@ -133,18 +86,6 @@ CREATE TABLE `notification` (
   `tanggal` datetime NOT NULL,
   `id_order` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `notification`
---
-
-INSERT INTO `notification` (`id_notification`, `message`, `id_customer`, `tanggal`, `id_order`) VALUES
-(1, 'ORDER IN PROSSESS', 9, '2020-05-14 00:00:00', 3),
-(2, 'ORDER IS READY', 9, '2020-05-12 06:14:14', 3),
-(4, 'ORDER IN DELIVERY', 9, '2020-05-13 02:51:07', 8),
-(5, 'ORDER IN PROSSESS', 9, '2020-05-13 03:07:09', 11),
-(6, 'ORDER IS READY', 9, '2020-05-13 03:10:32', 11),
-(7, 'TRANSFERED VERIFICATION', 9, '2020-05-13 03:27:17', 12);
 
 -- --------------------------------------------------------
 
@@ -209,21 +150,6 @@ CREATE TABLE `transaction` (
   `status_order` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `transaction`
---
-
-INSERT INTO `transaction` (`id_order`, `id_customer`, `price_total`, `method`, `img`, `order_date`, `status_order`) VALUES
-(4, 1, 10000, 'CASH', '0', '2020-04-21', 2),
-(5, 9, 505000, 'TRANSFER', '1589269998845.png', '2020-04-28', 0),
-(6, 9, 12826000, 'CASH', '0', '2020-04-28', 3),
-(7, 39, 175000, 'CASH', '0', '2020-05-07', 0),
-(8, 9, 25000, 'CASH', '0', '2020-05-10', 2),
-(9, 40, 25000, 'CASH', '0', '2020-05-12', 3),
-(10, 40, 30000, 'TRANSFER', '', '2020-05-12', 0),
-(11, 9, 80000, 'COD', NULL, '2020-05-13', 3),
-(12, 9, 25000, 'TRANSFER', NULL, '2020-05-13', 5);
-
 -- --------------------------------------------------------
 
 --
@@ -248,27 +174,6 @@ INSERT INTO `user` (`id_user`, `nama_user`, `username`, `password`, `hakakses`) 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
---
-
-CREATE TABLE `users` (
-  `id` int(100) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `phone_number` varchar(10) NOT NULL,
-  `password` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`id`, `name`, `phone_number`, `password`) VALUES
-(1, 'Reza', '0893637283', 'be041b21f66931f5a1d24e1e19a78539'),
-(2, 'Reza', '0893637283', 'be041b21f66931f5a1d24e1e19a78539');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `vote`
 --
 
@@ -278,19 +183,6 @@ CREATE TABLE `vote` (
   `id_customer` int(11) NOT NULL,
   `tgl` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `vote`
---
-
-INSERT INTO `vote` (`id_vote`, `id_product`, `id_customer`, `tgl`) VALUES
-(1, 1, 1, '2020-03-18'),
-(2, 1, 2, '2020-03-18'),
-(3, 4, 9, '2020-05-06'),
-(4, 5, 9, '2020-05-06'),
-(5, 4, 39, '2020-05-07'),
-(6, 5, 39, '2020-05-07'),
-(7, 7, 39, '2020-05-07');
 
 --
 -- Indexes for dumped tables
@@ -339,12 +231,6 @@ ALTER TABLE `user`
   ADD PRIMARY KEY (`id_user`);
 
 --
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `vote`
 --
 ALTER TABLE `vote`
@@ -370,7 +256,7 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT for table `notification`
 --
 ALTER TABLE `notification`
-  MODIFY `id_notification` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_notification` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `product`
@@ -389,12 +275,6 @@ ALTER TABLE `transaction`
 --
 ALTER TABLE `user`
   MODIFY `id_user` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `vote`

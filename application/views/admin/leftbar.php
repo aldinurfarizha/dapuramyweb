@@ -76,13 +76,14 @@
 
       <li class="treeview <?php if($this->uri->segment('1')=='report') { echo"active menu-open" ;}?>">
         <a href="#">
-          <i class="fa fa-laptop"></i>
-          <span>Report</span>
+          <i class="fa fa-gears"></i>
+          <span>Setting</span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
           </span>
         </a>
         <ul class="treeview-menu">
+        <li class="<?php if($this->uri->segment('2')=='banner') { echo"active" ;}?>"><a href="<?php echo base_url('report/banner') ?>"><i class="fa fa-image"></i> Banner Android</a></li>
           <li class="<?php if($this->uri->segment('2')=='report') { echo"active" ;}?>"><a href="<?php echo base_url('report/rep') ?>"><i class="fa fa-id-card-o"></i> Report</a></li>
        
         </ul>

@@ -4,12 +4,42 @@ class Report extends CI_Controller{
     public function __construct()
     {   
         parent::__construct();
+        $this->load->library('upload');
         $this->load->library('Pdf');
         $this->load->model('m_transaction');
     }
   public function rep(){
       $this->load->view('report/v_report');
   }
+  public function banner(){
+    $data['get_banner'] = $this->m_product->get_banner();
+    $this->load->view('report/v_banner',$data);
+}
+public function change_banner(){
+    $id=$this->input->post('id');
+    $config['upload_path'] = './assets/images/banner/';
+    $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; 
+    $config['encrypt_name'] = TRUE; 
+    $this->upload->initialize($config);
+    if ($this->upload->do_upload('picture')){
+        $gbr = $this->upload->data();
+        $config['image_library']='gd2';
+        $config['source_image']='./assets/images/banner/'.$gbr['file_name'];
+        $config['create_thumb']= FALSE;
+        $config['maintain_ratio']= FALSE;
+        $config['quality']= '50%';
+        $config['width']= 1400;
+        $config['height']= 700;
+        $config['new_image']= './assets/images/banner/'.$gbr['file_name'];
+        $this->load->library('image_lib', $config);
+        $this->image_lib->resize();
+
+        $picture=$gbr['file_name'];
+        $this->m_product->change_banner($id,$picture);
+        $this->session->set_flashdata('edit', 'sdf');
+        redirect('report/banner');
+    }
+}
   public function print_report(){
     $month=$this->input->post('month');
     $year=$this->input->post('year');
