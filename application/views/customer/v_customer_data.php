@@ -199,14 +199,14 @@
                         <div class="modal-body">
                            
                             <br>
-                                   <input name="id_product" type="hidden" value="<?php echo $id_customer; ?>"> 
+                                   <input name="id_customer" type="hidden" value="<?php echo $id_customer; ?>"> 
                                     <input class="form-control" name="nama"value="Name : <?php echo $name; ?>" readonly>
                                     <br>
                                     <input class="form-control" name="nama"value="Address : <?php echo $address; ?>" readonly>
                                     <br>
                                     <input class="form-control" name="nama"value="Phone Number : <?php echo $phone_number; ?>" readonly>
                                     <br>
-                                    <center><img src="<?php echo base_url('assets/images/customer/').$card_identity ?>" width="150px"></center>
+                                    <center><img src="<?php echo base_url('apidapuramy/uploads/').$card_identity ?>" width="150px"></center>
                                    
                         </div>
                         <div class="modal-footer">
