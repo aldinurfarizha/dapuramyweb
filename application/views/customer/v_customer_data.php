@@ -141,6 +141,8 @@
                     $status=$sws['status'];
                     $phone_number=$sws['phone_number'];
                     $card_identity=$sws['card_identity'];
+                    $token=$sws['token_fcm'];
+
               ?>
                <div id="display<?php echo $id_customer?>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
                     <div class="modal-dialog">
@@ -152,6 +154,7 @@
                         <div class="modal-body">
                            
                             <br>
+                            <input name="token" type="hidden" value="<?php echo $token; ?>"> 
                                    <input name="id_customer" type="hidden" value="<?php echo $id_customer; ?>"> 
                                     <input class="form-control" name="nama"value="Name : <?php echo $name; ?>" readonly>
                                     <br>
@@ -159,7 +162,7 @@
                                     <br>
                                     <input class="form-control" name="nama"value="Address : <?php echo $address; ?>" readonly>
                                     <br>
-                                    <center><img src="<?php echo base_url('assets/images/customer/').$card_identity ?>" width="150px"></center>
+                                    <center><img src="<?php echo base_url('apidapuramy/uploads/').$card_identity ?>" width="150px"></center>
                                    
                         </div>
                         <div class="modal-footer">

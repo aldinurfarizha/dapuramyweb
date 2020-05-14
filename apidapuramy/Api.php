@@ -17,19 +17,11 @@
 				$method=$_POST['method'];
 				$status_order=0;
 			
-				$max ="SELECT MAX(id_order)+1 as id_order FROM transaction";
-				$result3 = $conn->query($max);
-    			if ($result3->num_rows > 0) {
+			
+        	
+				
 
-    			while($row3 = $result3->fetch_assoc()) {                    
-    			$id_order=$row3['id_order']; 
-
-    			}
-    			} else {
-        		echo "mabok";
-    			}
-
-				$stmt = $conn->prepare("INSERT INTO transaction (id_order, id_customer, price_total, method,order_date, status_order) values($id_order,?,?,?,CURDATE(),?)");
+				$stmt = $conn->prepare("INSERT INTO transaction (id_customer, price_total, method,order_date, status_order) values(?,?,?,CURDATE(),?)");
 				$stmt->bind_param("ssss", $id_customer,$price_total, $method,$status_order);
 			
 							if($stmt->execute()){
@@ -85,21 +77,30 @@
 		$stmt->bind_param("s", $id_customer);
 		$stmt->execute();
 		$stmt->bind_result($id_customer, $id_order,$price_total, $img);
-		$drink= array(); 
+		$stmt->store_result();
 		
-		while($stmt->fetch()){
-			$sales  = array();
-			$sales['id_customer'] = $id_customer;
-			$sales['id_order']= $id_order;
-			$sales['price_total']=$price_total;
-			$sales['img']=$img;
-
-			array_push($drink, $sales); 
+		if($stmt->num_rows > 0){
+			$drink= array(); 
+		
+			while($stmt->fetch()){
+				$sales  = array();
+				$sales['id_customer'] = $id_customer;
+				$sales['id_order']= $id_order;
+				$sales['price_total']=$price_total;
+				$sales['img']=$img;
+	
+				array_push($drink, $sales); 
+			}
+					$response['data']= $drink; 
+					$response['error'] = false;
+					$stmt->close();
+		}
+		else{
+			$response['error'] = true;
+			$response['message'] = 'You Have no Order With Transfer Method';
+			$stmt->close();
 		}
 		
-				
-				$stmt->close();
-				$response['data']= $drink; 
 break;
 case 'upload_transfer':
 
@@ -123,8 +124,10 @@ break;
 			$stmt->bind_param("s", $id_customer);
 			$stmt->execute();
 			$stmt->bind_result($id_customer, $id_order, $method,$order_date,$price_total, $status_order);
+			$stmt->store_result();
+		
+		if($stmt->num_rows > 0){
 			$drink= array(); 
-			
 			while($stmt->fetch()){
 				$sales  = array();
 				$sales['id_customer'] = $id_customer;
@@ -137,8 +140,15 @@ break;
 			}
 			
 					
-					$stmt->close();
 					$response['data']= $drink; 
+					$response['error'] = false;
+					$stmt->close();
+		}else{
+			$response['error'] = true;
+			$response['message'] = 'You Have No Order';
+			$stmt->close();
+		}	
+			
 			
 					
 		
