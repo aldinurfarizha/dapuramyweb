@@ -16,13 +16,14 @@
 				$price_total= $_POST['price_total'];
 				$method=$_POST['method'];
 				$status_order=0;
+				$img="no_image";
 			
 			
         	
 				
 
-				$stmt = $conn->prepare("INSERT INTO transaction (id_customer, price_total, method,order_date, status_order) values(?,?,?,CURDATE(),?)");
-				$stmt->bind_param("ssss", $id_customer,$price_total, $method,$status_order);
+				$stmt = $conn->prepare("INSERT INTO transaction (id_customer, price_total, method,order_date, status_order,img) values(?,?,?,CURDATE(),?,?)");
+				$stmt->bind_param("sssss", $id_customer,$price_total, $method,$status_order,$img);
 			
 							if($stmt->execute()){
 								$response['error'] = false; 
