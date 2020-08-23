@@ -515,7 +515,18 @@ break;
 	//in this call we will fetch all the images 
 	
 	
-
+	case 'cancle_order':
+				
+		$id_order= $_POST['id_order'];
+		$stmt = $conn->prepare("UPDATE transaction set status_order=99 where id_order=?");
+		$stmt->bind_param("s", $id_order);
+	
+					if($stmt->execute()){
+						$response['error'] = false; 
+						$response['message'] = 'Order Cancle'; 
+					}
+	
+break;
 
 			case 'login':
 				

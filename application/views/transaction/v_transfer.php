@@ -134,7 +134,13 @@ switch ($status) {
 
     
     <td><center>
-    <a class="btn btn-sm bg-aqua" href="#delete<?php echo $id_order?>" data-toggle="modal" title="Change"><span class="fa fa-edit"></span> Change Status</a>
+    <?php if($status=="99"){
+      echo '';
+    }
+    else{
+      echo '<a class="btn btn-sm bg-aqua" href="#delete'.$id_order.'" data-toggle="modal" title="Change"><span class="fa fa-edit"></span> Change Status</a>';
+    }?>
+    
 
     </td>
 	</center>
@@ -192,6 +198,9 @@ switch ($status) {
       &nbsp;
       <label>
 				<input type="radio" name="metode" id="metode" value="2">Order In Delivery
+      </label>
+      <label>
+				<input type="radio" name="metode" id="metode" value="99">Reject Order
       </label>
       
       </h4>
